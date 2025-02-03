@@ -305,9 +305,9 @@ Replace `<PIPELINENAME>` with the name of your Jenkins pipeline.
 ## 3. Set AWS Credentials in the CLI
 Set your AWS credentials in the environment:
 
-`export AWS_ACCESS_KEY_ID="AKIA3CMCCJSWMX4X6PNY"`
+`export AWS_ACCESS_KEY_ID="<your access key>"`
 
-`export AWS_SECRET_ACCESS_KEY="p404JwJNc4GFmvc8lIPpJdlRwsQIj1dIfBv6RU3C"`
+`export AWS_SECRET_ACCESS_KEY="<your access key>"`
 
 `export AWS_REGION="us-east-1"`  # Replace with your region
 
