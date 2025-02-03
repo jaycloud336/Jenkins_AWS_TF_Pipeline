@@ -1,4 +1,6 @@
-# Overview of Jenkins Pipeline with Terraform and AWS
+![alt text](Images/devops.png)
+
+# Overview of Jenkins Pipeline with Terraform + AWS
 
 In modern DevOps practices, continuous integration and continuous deployment (CI/CD) are crucial to streamline development workflows and enhance collaboration between teams. A Jenkins pipeline is a powerful tool in this process, automating the tasks required to build, test, and deploy applications or infrastructure changes.
 
@@ -10,4 +12,4 @@ In DevOps, Jenkins pipelines are essential for automating repetitive tasks like 
 
 ---
 
-Setting up Jenkins pipelines with Terraform and AWS is an essential practice for teams embracing DevOps principles. It helps streamline processes, improves collaboration, and increases the overall speed and reliability of deployments. This guide will walk you through the process of setting up your Jenkins pipeline to automate the deployment of Terraform code on AWS, ensuring a smooth and efficient CI/CD pipeline.
+*Setting up Jenkins pipelines with Terraform and AWS is an essential practice for teams embracing DevOps principles. It helps streamline processes, improves collaboration, and increases the overall speed and reliability of deployments. This guide will walk you through the process of setting up your Jenkins pipeline to automate the deployment of Terraform code on AWS, ensuring a smooth and efficient CI/CD pipeline.*
