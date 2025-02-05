@@ -1,3 +1,4 @@
+# Security Group For ALB
 resource "aws_security_group" "alb_sg" {
   name        = "custom-alb-sg"
   description = "Security Group for Application Load Balancer"
@@ -23,7 +24,7 @@ resource "aws_security_group" "alb_sg" {
 }
 
 
-//2. Security Group For EC2
+# Security Group For EC2
 
 resource "aws_security_group" "ec2_sg" {
   name        = "custom-ec2-sg"
@@ -52,7 +53,7 @@ resource "aws_security_group" "ec2_sg" {
   }
 }
 
-//3. Create The Application Load Balancer
+# Create The Application Load Balancer
 resource "aws_lb" "app_lb" {
   name               = "custom-app-lb"
   load_balancer_type = "application"
@@ -61,8 +62,7 @@ resource "aws_lb" "app_lb" {
   subnets            = aws_subnet.public_subnet[*].id
   depends_on         = [aws_internet_gateway.internet_gateway]
 }
-
-//4. Create A Target Group
+# Create a Target Group
 
 resource "aws_lb_target_group" "alb_ec2_tg" {
   name     = "custom-web-server-tg"
@@ -77,7 +77,7 @@ resource "aws_lb_target_group" "alb_ec2_tg" {
 
 }
 
-//5. alb listener
+# ALB listener
 resource "aws_lb_listener" "alb_listener" {
   load_balancer_arn = aws_lb.app_lb.arn
   port              = 80
@@ -92,7 +92,7 @@ resource "aws_lb_listener" "alb_listener" {
   }
 }
 
-//6. Launch template for ec2 instance
+# Launch template for ec2 instance
 resource "aws_launch_template" "ec2_launch_template" {
   name          = "custom-ec2-launch-template"
   image_id      = aws_ami_from_instance.example_ami.id
@@ -113,7 +113,7 @@ resource "aws_launch_template" "ec2_launch_template" {
   }
 }
 
-//7. Create Auto Scaling Group
+# Create Auto Scaling Group
 
 resource "aws_autoscaling_group" "ec2_asg" {
   max_size            = 3
