@@ -1,4 +1,4 @@
-//1. creat the vpc
+# VPC
 resource "aws_vpc" "custom_vpc" {
   cidr_block           = "10.230.0.0/16"
   enable_dns_support   = true
@@ -8,7 +8,7 @@ resource "aws_vpc" "custom_vpc" {
   }
 }
 
-//2.Create subnet put your AZ here
+# Subnets
 
 variable "vpc_availability_zone" {
   type        = list(string)
@@ -36,7 +36,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-//3. Create internet gateway and attach it to the vpc
+# IGW
 
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.custom_vpc.id
@@ -45,7 +45,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   }
 }
 
-//4. RT for the public subnet
+# Route Table
 resource "aws_route_table" "custom_route_table_public_subnet" {
   vpc_id = aws_vpc.custom_vpc.id
 
@@ -60,7 +60,7 @@ resource "aws_route_table" "custom_route_table_public_subnet" {
 
 }
 
-//5. Association between RT and IG
+# RT Association
 resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.custom_route_table_public_subnet.id
   count          = length((var.vpc_availability_zone))
@@ -68,13 +68,13 @@ resource "aws_route_table_association" "public_subnet_association" {
 }
 
 
-//6. EIP
+# EIP
 resource "aws_eip" "eip" {
   domain     = "vpc"
   depends_on = [aws_internet_gateway.internet_gateway]
 }
 
-//7. Nat Gateway
+# Nat Gateway
 resource "aws_nat_gateway" "custom_nat_gateway" {
   subnet_id     = element(aws_subnet.private_subnet[*].id, 0)
   allocation_id = aws_eip.eip.id
@@ -84,7 +84,7 @@ resource "aws_nat_gateway" "custom_nat_gateway" {
   }
 }
 
-//8. RT for private Subnet
+# RT For Private Subnet
 resource "aws_route_table" "custom_route_table_private_subnet" {
   vpc_id = aws_vpc.custom_vpc.id
 
@@ -99,7 +99,7 @@ resource "aws_route_table" "custom_route_table_private_subnet" {
 
 }
 
-//9. RT Association Private
+# RT Association Private
 resource "aws_route_table_association" "private_subnet_association" {
   route_table_id = aws_route_table.custom_route_table_private_subnet.id
   count          = length((var.vpc_availability_zone))

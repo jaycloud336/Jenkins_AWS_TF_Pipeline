@@ -4,7 +4,7 @@
   <img src="Images/devops.png" alt="alt text">
 </p>
 
-This included guide walks through the process of setting up Docker, accessing the Jenkins container, installing Terraform, and integrating AWS CLI within the Jenkins environment. It provides step-by-step instructions for pulling and running the Jenkins Docker image, installing and verifying Terraform, and configuring AWS CLI for use within the container.
+The included guide walks through the process of setting up Docker, accessing the Jenkins container, installing Terraform, and integrating AWS CLI within the Jenkins environment. It provides step-by-step instructions for pulling and running the Jenkins Docker image, installing and verifying Terraform, and configuring AWS CLI for use within the container.
 
 In addition, it includes instructions for setting up Jenkins pipelines, integrating AWS credentials, and running Terraform commands to deploy or destroy infrastructure. By following these steps, novice users will be able to configure their Jenkins instance, automate infrastructure provisioning, and manage AWS resources effectively through Terraform.
 
